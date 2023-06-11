@@ -15,4 +15,12 @@ mongoose
   .then(() => console.log("Connected to DB"))
   .catch(console.error);
 
+const Task = require("./models/Task");
+
+app.get("/tasks", async (req, res) => {
+  const tasks = await Task.find();
+
+  res.json(tasks);
+});
+
 app.listen(3001, () => console.log("Server started on port 3001"));
