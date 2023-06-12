@@ -33,14 +33,14 @@ app.post("/task/new", (req, res) => {
   res.json(task);
 });
 
-app.delete("/task/delete/id:", async (req, res) => {
+app.delete("/task/delete/:id", async (req, res) => {
   const result = await Task.findByIdAndDelete(req.params.id);
 
-  res.json(result);
+  res.json({ result });
 });
 
-app.put("/task/complete/:id", async (req, res) => {
-  const task = await Task.findById(req.param.id);
+app.get("/task/complete/:id", async (req, res) => {
+  const task = await Task.findById(req.params.id);
 
   task.complete = !task.complete;
 
@@ -49,4 +49,14 @@ app.put("/task/complete/:id", async (req, res) => {
   res.json(task);
 });
 
-app.listen(3001, () => console.log("Server started on port 3001"));
+app.put("/task/update/:id", async (req, res) => {
+  const task = await Task.findById(req.params.id);
+
+  task.text = req.body.text;
+
+  task.save();
+
+  res.json(task);
+});
+
+app.listen(3001);
