@@ -46,7 +46,7 @@ app.put("/task/complete/:id", async (req, res) => {
 
   task.save();
 
-  res.json(todo);
+  res.json(task);
 });
 
 app.listen(3001, () => console.log("Server started on port 3001"));
