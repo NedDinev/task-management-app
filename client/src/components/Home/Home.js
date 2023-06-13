@@ -7,14 +7,14 @@ export default function Home() {
   const [popupActive, setPopupActive] = useState(false);
   const [editPopupActive, setEditPopupActive] = useState(false);
   const [newTask, setNewTask] = useState("");
-  const [taskToEdit, setTaskToEdit] = useState();
+  const [taskIdToEdit, setTaskIdToEdit] = useState();
   return (
     <div>
       <h1>Task Management App</h1>
       <h4>Your tasks</h4>
 
       <TaskMapper
-        setTaskToEdit={setTaskToEdit}
+        setTaskIdToEdit={setTaskIdToEdit}
         setEditPopupActive={setEditPopupActive}
       />
 
@@ -34,7 +34,7 @@ export default function Home() {
           setPopupActive={setEditPopupActive}
           setNewTask={setNewTask}
           newTask={newTask}
-          taskToEdit={taskToEdit}
+          taskIdToEdit={taskIdToEdit}
           text={"Edit Task"}
         />
       )}

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { TaskService } from "../../services/TaskService";
 
 export default function Task(props) {
-  const { task, setTaskToEdit, setEditPopupActive } = props;
+  const { task, setTaskIdToEdit, setEditPopupActive } = props;
   useEffect(() => {
     TaskService.GetTasks();
   }, []);
@@ -37,7 +37,7 @@ export default function Task(props) {
           className="edit-task"
           onClick={() => {
             setEditPopupActive(true);
-            setTaskToEdit(task);
+            setTaskIdToEdit(task._id);
           }}
         >
           ✎

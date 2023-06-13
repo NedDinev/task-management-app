@@ -4,7 +4,7 @@ import NoTasks from "../NoTasks/NoTasks";
 import TaskWrapper from "../TaskWrapper/TaskWrapper";
 
 export default function TaskMapper(props) {
-  const { setTaskToEdit, setEditPopupActive } = props;
+  const { setTaskIdToEdit, setEditPopupActive } = props;
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function TaskMapper(props) {
       {tasks.length > 0 && (
         <TaskWrapper
           tasks={tasks}
-          setTaskToEdit={setTaskToEdit}
+          setTaskIdToEdit={setTaskIdToEdit}
           setEditPopupActive={setEditPopupActive}
         />
       )}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { TaskService } from "../../services/TaskService";
 
 export default function Popup(props) {
-  const { setPopupActive, text, taskToEdit } = props;
+  const { setPopupActive, text, taskIdToEdit } = props;
   const [taskTitle, setTaskTitle] = useState("");
   const [taskText, setTaskText] = useState("");
 
@@ -16,7 +16,7 @@ export default function Popup(props) {
 
   const handleButtonClick = () => {
     if (text === "Edit Task") {
-      TaskService.EditTask(taskToEdit, taskTitle, taskText);
+      TaskService.EditTask(taskIdToEdit, taskTitle, taskText);
     } else if (text === "Create Task") {
       TaskService.AddTask(taskTitle, taskText);
     }
