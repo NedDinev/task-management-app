@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { TaskService } from "../../services/TaskService";
-import Task from "../Task/Task";
 import NoTasks from "../NoTasks/NoTasks";
+import TaskWrapper from "../TaskWrapper/TaskWrapper";
 
 export default function TaskMapper(props) {
   const { setTaskIdToEdit, setEditPopupActive } = props;
@@ -14,15 +14,13 @@ export default function TaskMapper(props) {
   }, [tasks]);
   return (
     <div className="tasks">
-      {tasks.length > 0 &&
-        tasks.map((task) => (
-          <Task
-            key={task._id}
-            task={task}
-            setTaskIdToEdit={setTaskIdToEdit}
-            setEditPopupActive={setEditPopupActive}
-          />
-        ))}
+      {tasks.length > 0 && (
+        <TaskWrapper
+          tasks={tasks}
+          setTaskIdToEdit={setTaskIdToEdit}
+          setEditPopupActive={setEditPopupActive}
+        />
+      )}
       {tasks.length === 0 && <NoTasks />}
     </div>
   );
