@@ -29,15 +29,15 @@ export const TaskService = {
       .then((res) => res.json())
       .catch((err) => console.log(err)),
 
-  EditTask: async (taskIdToEdit, newTaskTitle, newTaskText) =>
-    await fetch(api_base + "/task/update/" + taskIdToEdit, {
+  EditTask: async (taskToEdit) =>
+    await fetch(api_base + "/task/update/" + taskToEdit._id, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: newTaskTitle,
-        text: newTaskText,
+        title: taskToEdit.title,
+        text: taskToEdit.text,
       }),
     })
       .then((res) => res.json())

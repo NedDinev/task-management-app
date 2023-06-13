@@ -1,7 +1,7 @@
 import Task from "../Task/Task";
 
 export default function TaskWrapper(props) {
-  const { tasks, setTaskIdToEdit, setEditPopupActive } = props;
+  const { tasks, setTaskToEdit, setEditPopupActive } = props;
   return (
     <div className="App">
       <div className="tasks">
@@ -9,7 +9,7 @@ export default function TaskWrapper(props) {
           <Task
             key={task._id}
             task={task}
-            setTaskIdToEdit={setTaskIdToEdit}
+            setTaskToEdit={setTaskToEdit}
             setEditPopupActive={setEditPopupActive}
           />
         ))}
