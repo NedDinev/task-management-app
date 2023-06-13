@@ -8,12 +8,10 @@ export default function Task(props) {
   }, []);
 
   const taskStatusIcon = task.complete ? "✔" : "⧗";
+  const isTaskCompleted = task.complete ? " is-complete" : "";
 
   return (
-    <div
-      className={"task" + (task.complete ? " is-complete" : "")}
-      key={task._id}
-    >
+    <div className={"task" + isTaskCompleted} key={task._id}>
       <div className="task-left-control">
         <div
           className="checkbox"
