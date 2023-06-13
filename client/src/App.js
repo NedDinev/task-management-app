@@ -6,6 +6,7 @@ function App() {
   const [popupActive, setPopupActive] = useState(false);
   const [editPopupActive, setEditPopupActive] = useState(false);
   const [newTask, setNewTask] = useState("");
+  const [taskIdToEdit, setTaskIdToEdit] = useState();
 
   useEffect(() => {
     GetTasks();
@@ -62,19 +63,35 @@ function App() {
       .catch((err) => console.log(err));
   };
 
-  const editTask = async (id) => {
-    const data = await fetch(api_base + "/task/edit/" + id, {})
-      .then(() => {
-        setTasks((res) => res.json());
-      })
+  const editTask = async () => {
+    const data = await fetch(api_base + "/task/update/" + taskIdToEdit, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        text: newTask,
+      }),
+    })
+      .then((res) => res.json())
       .catch((err) => console.log(err));
 
-    setTasks([...tasks, data]);
+    setTasks((tasks) =>
+      tasks.map((task) => {
+        if (task._id === taskIdToEdit) {
+          task.text = data.text;
+        }
+
+        return task;
+      })
+    );
+    setEditPopupActive(false);
+    setNewTask("");
   };
 
   return (
     <div className="App">
-      <h1>Welcome</h1>
+      <h1>Task Management App</h1>
       <h4>Your tasks</h4>
 
       <div className="tasks">
@@ -84,19 +101,29 @@ function App() {
               className={"task" + (task.complete ? " is-complete" : "")}
               key={task._id}
             >
-              <div
-                className="checkbox"
-                onClick={() => completeTask(task._id)}
-              ></div>
-              <div className="text">{task.text}</div> <div></div>
-              <div
-                className="edit-task"
-                onClick={() => setEditPopupActive(true)}
-              >
-                Edit
+              <div className="task-left-control">
+                <div
+                  className="checkbox"
+                  onClick={() => completeTask(task._id)}
+                ></div>
+                <div className="text">{task.text}</div>
               </div>
-              <div className="delete-task" onClick={() => deleteTask(task._id)}>
-                x
+              <div className="task-right-control">
+                <div
+                  className="edit-task"
+                  onClick={() => {
+                    setEditPopupActive(true);
+                    setTaskIdToEdit(task._id);
+                  }}
+                >
+                  ✎
+                </div>
+                <div
+                  className="delete-task"
+                  onClick={() => deleteTask(task._id)}
+                >
+                  🗑
+                </div>
               </div>
             </div>
           ))
@@ -109,7 +136,7 @@ function App() {
         +
       </div>
 
-      {popupActive ? (
+      {popupActive && (
         <div className="popup">
           <div className="closePopup" onClick={() => setPopupActive(false)}>
             X
@@ -127,30 +154,26 @@ function App() {
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
 
-      {editPopupActive ? (
+      {editPopupActive && (
         <div className="popup">
           <div className="closePopup" onClick={() => setEditPopupActive(false)}>
             X
           </div>
           <div className="content">
-            <h3>Add Task</h3>
+            <h3>Edit Task</h3>
             <input
               type="text"
               className="add-task-input"
               onChange={(e) => setNewTask(e.target.value)}
               value={newTask}
             />
-            <div className="button" onClick={editTask()}>
-              Create Task
+            <div className="button" onClick={editTask}>
+              Edit Task
             </div>
           </div>
         </div>
-      ) : (
-        ""
       )}
     </div>
   );

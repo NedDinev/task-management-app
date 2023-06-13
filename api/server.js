@@ -23,12 +23,12 @@ app.get("/tasks", async (req, res) => {
   res.json(tasks);
 });
 
-app.post("/task/new", (req, res) => {
+app.post("/task/new", async (req, res) => {
   const task = new Task({
     text: req.body.text,
   });
 
-  task.save();
+  await task.save();
 
   res.json(task);
 });
@@ -36,7 +36,7 @@ app.post("/task/new", (req, res) => {
 app.delete("/task/delete/:id", async (req, res) => {
   const result = await Task.findByIdAndDelete(req.params.id);
 
-  res.json({result});
+  res.json({ result });
 });
 
 app.get("/task/complete/:id", async (req, res) => {

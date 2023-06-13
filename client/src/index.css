@@ -48,6 +48,7 @@ h4 {
   transition: 0.5s;
   cursor: pointer;
   margin-bottom: 16px;
+  justify-content: space-between;
 }
 
 .task:hover {
@@ -59,18 +60,14 @@ h4 {
   height: 20px;
   margin-right: 16px;
   border-radius: 50%;
-  background-color: var(--dark-alt);
-  background-image: linear-gradient(to bottom, transparent, transparent);
+  background-color: var(--primary);
+  background-image: linear-gradient(to bottom, #d2d900, #936702);
   transition: 0.4s;
 }
 
 .task.is-complete .checkbox {
   background-color: var(--primary);
-  background-image: linear-gradient(
-    to bottom,
-    var(--primary),
-    var(--secondary)
-  );
+  background-image: linear-gradient(to bottom, #71ee03, #326c00);
 }
 
 .task .text {
@@ -82,15 +79,12 @@ h4 {
 }
 
 .task .delete-task {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 16px;
+  padding: 5px;
   color: var(--light);
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background-color: #af1e2d;
+  background-image: linear-gradient(to bottom, #ee0303, #6c0000);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +98,6 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 64px;
   height: 64px;
   border-radius: 999px;
@@ -125,7 +118,6 @@ h4 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-
   width: 100%;
   max-width: 400px;
   background-color: var(--light);
@@ -175,4 +167,27 @@ h4 {
   margin-top: 16px;
   text-align: center;
   cursor: pointer;
+}
+
+.edit-task {
+  background-image: linear-gradient(to bottom, #00d5d9, #023a93);
+  padding: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.task-left-control {
+  display: flex;
+}
+
+.task-right-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
