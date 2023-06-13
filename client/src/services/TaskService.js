@@ -10,14 +10,15 @@ export const TaskService = {
   CompleteTask: async (id) =>
     await fetch(api_base + "/task/complete/" + id).then((res) => res.json()),
 
-  AddTask: async (newTask) =>
+  AddTask: async (newTaskTitle, newTaskText) =>
     await fetch(api_base + "/task/new", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: newTask,
+        title: newTaskTitle,
+        text: newTaskText,
       }),
     }).then((res) => res.json()),
 
@@ -28,14 +29,15 @@ export const TaskService = {
       .then((res) => res.json())
       .catch((err) => console.log(err)),
 
-  EditTask: async (taskIdToEdit, newTask) =>
+  EditTask: async (taskIdToEdit, newTaskTitle, newTaskText) =>
     await fetch(api_base + "/task/update/" + taskIdToEdit, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        text: newTask,
+        title: newTaskTitle,
+        text: newTaskText,
       }),
     })
       .then((res) => res.json())

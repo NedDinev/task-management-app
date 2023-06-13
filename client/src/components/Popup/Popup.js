@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { TaskService } from "../../services/TaskService";
 
 export default function Popup(props) {
-  const { setPopupActive, setNewTask, newTask, text, taskIdToEdit } = props;
+  const { setPopupActive, text, taskIdToEdit } = props;
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskText, setTaskText] = useState("");
+
+  const handleTitleChange = (e) => {
+    setTaskTitle(e.target.value);
+  };
+
+  const handleTextChange = (e) => {
+    setTaskText(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    if (text === "Edit Task") {
+      TaskService.EditTask(taskIdToEdit, taskTitle, taskText);
+    } else if (text === "Create Task") {
+      TaskService.AddTask(taskTitle, taskText);
+    }
+    setPopupActive(false);
+    setTaskTitle("");
+    setTaskText("");
+  };
+
   return (
     <div className="popup">
       <div className="closePopup" onClick={() => setPopupActive(false)}>
@@ -13,18 +35,17 @@ export default function Popup(props) {
         <input
           type="text"
           className="add-task-input"
-          onChange={(e) => setNewTask(e.target.value)}
-          value={newTask}
+          onChange={handleTitleChange}
+          value={taskTitle}
+          placeholder="Task Title"
         />
-        <div
-          className="button"
-          onClick={() => {
-            text === "Edit Task" && TaskService.EditTask(taskIdToEdit, newTask);
-            text === "Create Task" && TaskService.AddTask(newTask);
-            setPopupActive(false);
-            setNewTask("");
-          }}
-        >
+        <textarea
+          className="add-task-input"
+          onChange={handleTextChange}
+          value={taskText}
+          placeholder="Task Description"
+        />
+        <div className="button" onClick={handleButtonClick}>
           {text}
         </div>
       </div>

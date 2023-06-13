@@ -25,6 +25,7 @@ app.get("/tasks", async (req, res) => {
 
 app.post("/task/new", async (req, res) => {
   const task = new Task({
+    title: req.body.title,
     text: req.body.text,
   });
 
@@ -52,6 +53,7 @@ app.get("/task/complete/:id", async (req, res) => {
 app.put("/task/update/:id", async (req, res) => {
   const task = await Task.findById(req.params.id);
 
+  task.title = req.body.title;
   task.text = req.body.text;
 
   task.save();

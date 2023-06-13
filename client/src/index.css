@@ -56,6 +56,9 @@ h4 {
 }
 
 .task .checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 20px;
   height: 20px;
   margin-right: 16px;
@@ -71,6 +74,7 @@ h4 {
 }
 
 .task .text {
+  color: var(--light-alt);
   font-size: 20px;
 }
 
@@ -145,6 +149,7 @@ h4 {
 }
 
 .add-task-input {
+  margin-bottom: 10px;
   appearance: none;
   outline: none;
   border: none;
@@ -202,4 +207,10 @@ h4 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.title-container {
+  display: flex;
+  position: relative;
+  margin-bottom: 5px;
 }

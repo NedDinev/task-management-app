@@ -6,12 +6,13 @@ function useTask() {
 
     completeTask: () => TaskController.CompleteTask,
 
-    addTask: (newTask) => TaskController.AddTask(newTask),
+    addTask: (newTaskTitle, newTaskText) =>
+      TaskController.AddTask(newTaskTitle, newTaskText),
 
     deleteTask: (id) => TaskController.DeleteTask(id),
 
-    edit: (taskIdToEdit, newTask) =>
-      TaskController.EditTask(taskIdToEdit, newTask),
+    edit: (taskIdToEdit, newTaskTitle, newTaskText) =>
+      TaskController.EditTask(taskIdToEdit, newTaskTitle, newTaskText),
   };
 }
 

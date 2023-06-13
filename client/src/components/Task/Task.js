@@ -6,6 +6,9 @@ export default function Task(props) {
   useEffect(() => {
     TaskService.GetTasks();
   }, []);
+
+  const taskStatusIcon = task.complete ? "✔" : "⧗";
+
   return (
     <div
       className={"task" + (task.complete ? " is-complete" : "")}
@@ -15,8 +18,13 @@ export default function Task(props) {
         <div
           className="checkbox"
           onClick={() => TaskService.CompleteTask(task._id)}
-        ></div>
-        <div className="text">{task.text}</div>
+        >
+          {taskStatusIcon}
+        </div>
+        <div>
+          <div className="title-container">Title: {task.title}</div>
+          <div className="text"> {task.text}</div>
+        </div>
       </div>
       <div className="task-right-control">
         <div

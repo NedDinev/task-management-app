@@ -12,6 +12,7 @@ export default function Home() {
     <div>
       <h1>Task Management App</h1>
       <h4>Your tasks</h4>
+
       <TaskMapper
         setTaskIdToEdit={setTaskIdToEdit}
         setEditPopupActive={setEditPopupActive}
