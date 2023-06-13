@@ -181,6 +181,18 @@ h4 {
   font-weight: 700;
   margin-right: 10px;
 }
+.download-task {
+  background-image: linear-gradient(to bottom, #c000d9, #93026a);
+  padding: 5px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-right: 10px;
+}
 
 .task-left-control {
   display: flex;

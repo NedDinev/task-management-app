@@ -89,6 +89,29 @@ function App() {
     setNewTask("");
   };
 
+  const formatTask = (task) => {
+    let taskTimeStampToDate = new Date(Number(task.timestamp));
+    let dateFormat =
+      taskTimeStampToDate.getHours() +
+      ":" +
+      taskTimeStampToDate.getMinutes() +
+      ", " +
+      taskTimeStampToDate.toDateString();
+
+    return `Task ID: ${task._id}\nTask: ${task.text} \nCompleted: ${task.complete}\nTask created on: ${dateFormat}`;
+  };
+
+  const downloadTask = (task) => {
+    const taskToText = formatTask(task);
+
+    const blob = new Blob([taskToText], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.download = `Task_${task._id}.txt`;
+    link.href = url;
+    link.click();
+  };
+
   return (
     <div className="App">
       <h1>Task Management App</h1>
@@ -109,6 +132,14 @@ function App() {
                 <div className="text">{task.text}</div>
               </div>
               <div className="task-right-control">
+                <div
+                  className="download-task"
+                  onClick={() => {
+                    downloadTask(task);
+                  }}
+                >
+                  ⇩
+                </div>
                 <div
                   className="edit-task"
                   onClick={() => {
