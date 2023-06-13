@@ -7,5 +7,5 @@ export const taskFormat = (task) => {
     ", " +
     taskTimeStampToDate.toDateString();
 
-  return `Task ID: ${task._id}\nTask: ${task.text} \nCompleted: ${task.complete}\nTask created on: ${dateFormat}`;
+  return `Task ID: ${task._id}\nTitle: ${task.title}\nDescription: ${task.text} \nCompleted: ${task.complete}\nTask created on: ${dateFormat}`;
 };
