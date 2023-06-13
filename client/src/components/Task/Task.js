@@ -1,9 +1,8 @@
 import { useEffect } from "react";
-import { TaskService } from "../../service/TaskService";
+import { TaskService } from "../../services/TaskService";
 
 export default function Task(props) {
-  const { task } = props;
-
+  const { task, setTaskIdToEdit, setEditPopupActive } = props;
   useEffect(() => {
     TaskService.GetTasks();
   }, []);
@@ -28,7 +27,7 @@ export default function Task(props) {
         >
           ⇩
         </div>
-        {/* <div
+        <div
           className="edit-task"
           onClick={() => {
             setEditPopupActive(true);
@@ -37,9 +36,12 @@ export default function Task(props) {
         >
           ✎
         </div>
-        <div className="delete-task" onClick={() => deleteTask(task._id)}>
+        <div
+          className="delete-task"
+          onClick={() => TaskService.DeleteTask(task._id)}
+        >
           🗑
-        </div> */}
+        </div>
       </div>
     </div>
   );
