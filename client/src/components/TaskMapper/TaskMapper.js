@@ -11,7 +11,7 @@ export default function TaskMapper(props) {
     return async () => {
       TaskService.GetTasks().then((tasks) => setTasks(tasks));
     };
-  }, [tasks]);
+  }, [tasks, setTasks]);
   return (
     <div className="tasks">
       {tasks.length > 0 && (
