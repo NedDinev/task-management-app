@@ -14,13 +14,7 @@ app.use(
 );
 app.use(express.json());
 
-mongoose
-  .connect(process.env.PORT, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log(`Connected to DB`))
-  .catch(console.error);
+mongoose.connect(process.env.MONGODB_URL);
 
 const Task = require("./models/Task");
 
@@ -72,4 +66,6 @@ app.put("/task/update/:id", async (req, res) => {
   res.json(task);
 });
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT, () => {
+  console.log("Server is Running on port " + process.env.PORT);
+});
