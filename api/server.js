@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 
@@ -8,13 +9,10 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect(
-    "mongodb+srv://task-management-app:4swqqzX9sOsPrKXt@cluster0.oxqzp4f.mongodb.net/task-management-app-db?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
+  .connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("Connected to DB"))
   .catch(console.error);
 
