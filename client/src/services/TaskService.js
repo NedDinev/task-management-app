@@ -3,7 +3,9 @@ import { taskFormat } from "../utils/taskFormat";
 
 export const TaskService = {
   GetTasks: async () =>
-    await fetch(api_base + "/tasks")
+    await fetch(api_base + "/tasks", {
+      method: "GET",
+    })
       .then((res) => res.json())
       .catch((err) => console.error("Error: ", err)),
 
