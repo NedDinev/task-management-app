@@ -2,8 +2,7 @@
   "name": "task-management-app",
   "version": "1.0.0",
   "engines": {
-    "node": "v18.16.1",
-    "npm": "9.8.1"
+    "node": "18.x"
   },
   "description": "The Task Management App is a web-based application that allows users to manage their tasks and track their progress. It provides features for creating, updating, and deleting tasks, as well as setting due dates. The application is built using the MERN stack (MongoDB, Express.js, React.js, and Node.js) and follows a client-server architecture.",
   "main": "index.js",
@@ -14,12 +13,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.22.9",
-    "@babel/eslint-parser": "^7.22.9",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@babel/preset-env": "^7.22.9",
-    "dotenv": "^16.3.1"
-  }
+  "license": "ISC"
 }
