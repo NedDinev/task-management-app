@@ -1,3 +1,4 @@
+require("dotenv").config();
 const path = require("node:path");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -6,10 +7,9 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/task-management-app", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -62,5 +62,10 @@ app.put("/task/update/:id", async (req, res) => {
   res.json(task);
 });
 
+const dirname = path.resolve();
+app.use(express.static(path.join(dirname, "/client/build")));
+app.get("*", (req, res) =>
+  res.sendFile(path.join(dirname, "/client/build/index.html"))
+);
 
 app.listen(3001);
