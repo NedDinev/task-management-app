@@ -12,6 +12,7 @@ export const TaskService = {
 
   AddTask: async (newTaskTitle, newTaskText) =>
     await fetch(api_base + "/task/new", {
+      mode: "no-cors",
       method: "POST",
       headers: {
         "Content-Type": "application/json",
