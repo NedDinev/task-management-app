@@ -5,13 +5,22 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://task-management-app-api-git-main-neddinev.vercel.app/"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/task-management-app", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(
+    "mongodb+srv://task-management-app:wfCQutsMbbJQsBoF@cluster0.oxqzp4f.mongodb.net/?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }
+  )
   .then(() => console.log("Connected to DB"))
   .catch(console.error);
 
