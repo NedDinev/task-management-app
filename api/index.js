@@ -14,7 +14,13 @@ app.use(
 );
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URL);
+mongoose
+  .connect(process.env.PORT, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log(`Connected to DB`))
+  .catch(console.error);
 
 const Task = require("./models/Task");
 
