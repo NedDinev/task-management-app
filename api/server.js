@@ -5,17 +5,11 @@ const cors = require("cors");
 const app = express();
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: ["https://task-management-app-api-git-main-neddinev.vercel.app/"],
-    methods: ["GET", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 mongoose
   .connect(
-    "mongodb+srv://task-management-app:wfCQutsMbbJQsBoF@cluster0.oxqzp4f.mongodb.net/?retryWrites=true&w=majority",
+    "mongodb+srv://task-management-app:4swqqzX9sOsPrKXt@cluster0.oxqzp4f.mongodb.net/task-management-app-db?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
