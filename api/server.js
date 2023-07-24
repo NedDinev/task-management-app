@@ -7,6 +7,8 @@ const app = express();
 
 app.use(express.json());
 
+
+
 mongoose
   .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
@@ -67,4 +69,7 @@ app.get("*", (req, res) =>
   res.sendFile(path.join(dirname, "/client/build/index.html"))
 );
 
-app.listen(3001);
+const port = process.env.PORT || 3001;
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
