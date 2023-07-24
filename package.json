@@ -1,6 +1,10 @@
 {
   "name": "task-management-app",
   "version": "1.0.0",
+  "engines": {
+    "node": "v18.16.1",
+    "npm": "9.8.1"
+  },
   "description": "The Task Management App is a web-based application that allows users to manage their tasks and track their progress. It provides features for creating, updating, and deleting tasks, as well as setting due dates. The application is built using the MERN stack (MongoDB, Express.js, React.js, and Node.js) and follows a client-server architecture.",
   "main": "index.js",
   "scripts": {
