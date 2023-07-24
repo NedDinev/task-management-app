@@ -7,7 +7,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://task-management-app-api.vercel.app",
+    origin: "https://task-management-app-client-lime.vercel.app",
     methods: ["GET", "POST"],
     credentials: true,
   })
