@@ -24,6 +24,10 @@ mongoose
 
 const Task = require("./models/Task");
 
+app.get("/", (req, res) => {
+  res.json("Connected to DB");
+});
+
 app.get("/tasks", async (req, res) => {
   const tasks = await Task.find();
 
