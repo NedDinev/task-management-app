@@ -8,14 +8,14 @@ const app = express();
 app.use(
   cors({
     origin: ["https://task-management-app-client-lime.vercel.app"],
-    methods: ["GET", "POST"],
+    methods: ["POST", "GET"],
     credentials: true,
   })
 );
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGODB_URL, {
+  .connect(process.env.PORT, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -72,4 +72,4 @@ app.put("/task/update/:id", async (req, res) => {
   res.json(task);
 });
 
-app.listen(3001);
+app.listen(process.env.PORT);
