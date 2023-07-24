@@ -5,8 +5,14 @@ require("dotenv").config();
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "https://task-management-app-api.vercel.app/",
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(express.json());
-app.use(cors());
 
 mongoose
   .connect(process.env.MONGODB_URL, {
