@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 require("dotenv").config();
 const path = require("node:path");
+=======
+>>>>>>> parent of 01594bc (Publish to Heroku)
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -63,6 +66,7 @@ app.put("/task/update/:id", async (req, res) => {
   res.json(task);
 });
 
+<<<<<<< HEAD
 const dirname = path.resolve();
 app.use(express.static(path.join(dirname, "/client/build")));
 app.get("*", (req, res) =>
@@ -73,3 +77,6 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+=======
+app.listen(3001);
+>>>>>>> parent of 01594bc (Publish to Heroku)
