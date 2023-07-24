@@ -5,7 +5,13 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: ["https://task-management-app-client-lime.vercel.app"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 mongoose
@@ -13,7 +19,7 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => console.log("Connected to DB"))
+  .then(() => console.log(`Connected to DB`))
   .catch(console.error);
 
 const Task = require("./models/Task");
