@@ -15,7 +15,7 @@ app.use(
 app.use(express.json());
 
 mongoose
-  .connect(process.env.PORT, {
+  .connect(process.env.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
